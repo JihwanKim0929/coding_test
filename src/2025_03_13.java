@@ -175,3 +175,39 @@
 //    }
 //}
 
+//import java.util.*;
+//import java.io.*;
+//
+//class p10{
+//    public static void main(String[] args)throws IOException{
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st = new StringTokenizer(br.readLine());
+//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//        int n = Integer.parseInt(st.nextToken());
+//        int m = Integer.parseInt(st.nextToken());
+//        st = new StringTokenizer(br.readLine());
+//        Deque<node> deque = new LinkedList<>();
+//        for(int i=1;i<=n;i++){
+//            int num = Integer.parseInt(st.nextToken());
+//            //들어온 수와 덱의 맨 뒷값부터 비교해 더 크면 제거
+//            while(!deque.isEmpty() && deque.getLast().val>num){
+//                deque.removeLast();
+//            }
+//            deque.offer(new node(i,num));
+//            if(deque.peekFirst().idx<i-m+1)
+//                deque.pollFirst();
+//            bw.write(deque.peekFirst().val+" ");
+//        }
+//        bw.flush();
+//        bw.close();
+//    }
+//}
+//
+//class node{
+//    int idx;
+//    int val;
+//    node(int idx, int val){
+//        this.idx = idx;
+//        this.val = val;
+//    }
+//}
