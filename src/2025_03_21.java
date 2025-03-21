@@ -138,34 +138,34 @@
 //    }
 //}
 
-import java.util.*;
-import java.io.*;
-class p38{
-    public static void main(String[] args)throws IOException{
-        Scanner sc = new Scanner(System.in);
-        int A = sc.nextInt();
-        int B = sc.nextInt();
-        int[] arr = new int[B+1];
-        for(int i=2;i<=B;i++)
-            arr[i] = i;
-        arr[1] = -1;
-        for(int i=2;i<=Math.sqrt(B);i++){
-            if(arr[i]!=-1){
-                for(int j=i*2;j<=B;j++)
-                    arr[j] = -1;
-            }
-        }
-        int answer = 0;
-        for(int i=2;i<=B;i++){
-            if(arr[i]!=-1){
-                long tmp = i;
-                while(tmp<=B){
-                    if(tmp>=A)
-                        answer++;
-                    tmp*=i;
-                }
-            }
-        }
-        System.out.println(answer);
-    }
-}
+//import java.util.*;
+//import java.io.*;
+//class p38{
+//    public static void main(String[] args)throws IOException{
+//        Scanner sc = new Scanner(System.in);
+//        int A = sc.nextInt();
+//        int B = sc.nextInt();
+//        int[] arr = new int[B+1];
+//        for(int i=2;i<=B;i++)
+//            arr[i] = i;
+//        arr[1] = -1;
+//        for(int i=2;i<=Math.sqrt(B);i++){
+//            if(arr[i]!=-1){
+//                for(int j=i*2;j<=B;j+=i)
+//                    arr[j] = -1;
+//            }
+//        }
+//        int answer = 0;
+//        for(int i=2;i<=B;i++){
+//            if(arr[i]!=-1){
+//                long tmp = (long) i *i;
+//                while(tmp<=B){
+//                    if(tmp>=A)
+//                        answer++;
+//                    tmp*=i;
+//                }
+//            }
+//        }
+//        System.out.println(answer);
+//    }
+//}
