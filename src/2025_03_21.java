@@ -84,7 +84,7 @@
 //    }
 //    public int compareTo(Meeting m){
 //        if(e == m.e){
-//            return s-m.e;
+//            return s-m.s;
 //        }
 //        return e-m.e;
 //    }
@@ -143,26 +143,27 @@
 //class p38{
 //    public static void main(String[] args)throws IOException{
 //        Scanner sc = new Scanner(System.in);
-//        int A = sc.nextInt();
-//        int B = sc.nextInt();
-//        int[] arr = new int[B+1];
-//        for(int i=2;i<=B;i++)
+//        long A = sc.nextLong();
+//        long B = sc.nextLong();
+//        int[] arr = new int[10000001];
+//        for(int i=2;i<arr.length;i++)
 //            arr[i] = i;
 //        arr[1] = -1;
-//        for(int i=2;i<=Math.sqrt(B);i++){
+//        for(int i=2;i<=Math.sqrt(arr.length);i++){
 //            if(arr[i]!=-1){
-//                for(int j=i*2;j<=B;j+=i)
+//                for(int j=i*2;j<arr.length;j+=i)
 //                    arr[j] = -1;
 //            }
 //        }
 //        int answer = 0;
-//        for(int i=2;i<=B;i++){
+//        for(int i=2;i<10000001;i++){
 //            if(arr[i]!=-1){
-//                long tmp = (long) i *i;
-//                while(tmp<=B){
-//                    if(tmp>=A)
+//                long tmp = arr[i];
+//                while((double)arr[i]<=(double)B/(double)tmp){
+//                    if((double)arr[i]>=(double)A/(double)tmp){
 //                        answer++;
-//                    tmp*=i;
+//                    }
+//                    tmp *= arr[i];
 //                }
 //            }
 //        }
