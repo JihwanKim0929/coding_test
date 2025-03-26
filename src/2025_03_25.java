@@ -56,58 +56,55 @@
 //    }
 //}
 
-import java.util.*;
-import java.io.*;
-class p47{
-    static int n;
-    static ArrayList<Integer>[] graph;
-    static boolean[] visited;
-    static int[] howMany;
-    public static void main(String[] args)throws IOException{
-        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        graph = new ArrayList[n+1];
-        for(int i=1;i<=n;i++)
-            graph[i] = new ArrayList<>();
+//import java.util.*;
+//import java.io.*;
+//class p47{
+//    static int n;
+//    static ArrayList<Integer>[] graph;
+//    static boolean[] visited;
+//    static int[] howMany;
+//    public static void main(String[] args)throws IOException{
+//        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st = new StringTokenizer(br.readLine());
+//        n = Integer.parseInt(st.nextToken());
+//        int m = Integer.parseInt(st.nextToken());
+//        graph = new ArrayList[n+1];
+//        for(int i=1;i<=n;i++)
+//            graph[i] = new ArrayList<>();
+//
+//        for(int i=0;i<m;i++){
+//            st = new StringTokenizer(br.readLine());
+//            int orig = Integer.parseInt(st.nextToken());
+//            int dest = Integer.parseInt(st.nextToken());
+//            graph[orig].add(dest);
+//        }
+//
+//        howMany = new int[n+1];
+//
+//        for(int i=1;i<=n;i++){
+//            visited = new boolean[n+1];
+//            Queue<Integer>queue = new LinkedList<>();
+//            queue.offer(i);
+//            visited[i] = true;
+//            howMany[i]++;
+//            while(!queue.isEmpty()){
+//                int nowNode = queue.poll();
+//                for(int j:graph[nowNode]){
+//                    if(!visited[j]){
+//                        howMany[j]++;
+//                        visited[j] = true;
+//                        queue.offer(j);
+//                    }
+//                }
+//            }
+//        }
+//        int max = howMany[1];
+//        for(int i=2;i<=n;i++)
+//            if(howMany[i]>max)
+//                max = howMany[i];
+//        for(int i=1;i<=n;i++)
+//            if(howMany[i]==max)
+//                System.out.print(i+" ");
+//    }
+//}
 
-        for(int i=0;i<m;i++){
-            st = new StringTokenizer(br.readLine());
-            int dest = Integer.parseInt(st.nextToken());
-            int orig = Integer.parseInt(st.nextToken());
-            graph[orig].add(dest);
-        }
-
-        howMany = new int[n+1];
-
-        for(int i=1;i<=n;i++)
-            bfs(i);
-
-        int max = howMany[1];
-        for(int i=2;i<=n;i++)
-            if(howMany[i]>max)
-                max = howMany[i];
-
-        for(int i=1;i<=n;i++)
-            if(howMany[i]==max)
-                System.out.print(i+" ");
-    }
-    static void bfs(int startNode){
-        visited = new boolean[n+1];
-        Queue<Integer>queue = new LinkedList<>();
-        queue.offer(startNode);
-        visited[startNode] = true;
-        howMany[startNode]++;
-        while(!queue.isEmpty()){
-            int nowNode = queue.poll();
-            for(int i:graph[nowNode]){
-                if(!visited[i]){
-                    howMany[startNode]++;
-                    visited[i] = true;
-                    queue.offer(i);
-                }
-            }
-        }
-    }
-}
