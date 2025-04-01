@@ -256,3 +256,89 @@
 //        return this.val-o.val;
 //    }
 //}
+
+//import java.io.*;
+//import java.util.*;
+//
+//class p65{
+//    //map, snum, s_point_list,
+//    static int[][] map;
+//    static int snum;
+//    static ArrayList<int[]> s_point_list;
+//    static boolean[][] visited;
+//    static ArrayList<ArrayList<int[]>> sumList;
+//    static int[] dx = {0,0,1,-1};
+//    static int[] dy = {1,-1,0,0};
+//    static int n;
+//    static int m;
+//    public static void main(String[] args)throws IOException{
+//        //좌표 받기
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st = new StringTokenizer(br.readLine());
+//        n = Integer.parseInt(st.nextToken());
+//        m = Integer.parseInt(st.nextToken());
+//        map = new int[n][m];
+//        for(int i=0;i<n;i++){
+//            st = new StringTokenizer(br.readLine());
+//            for(int j=0;j<m;j++){
+//                map[i][j] = Integer.parseInt(st.nextToken());
+//            }
+//        }
+//        //각 좌표 돌면서 1일 경우 bfs
+//        snum = 1;
+//        visited = new boolean[n][m];
+//        sumList = new ArrayList<>();
+//        for(int i=0;i<n;i++){
+//            for(int j=0;j<n;j++){
+//                if(map[i][j]==1 && !visited[i][j]){
+//                    bfs(i,j);
+//                    sumList.add(s_point_list);
+//                    snum++;
+//                }
+//            }
+//        }
+//        for(int i=0;i<n;i++){
+//            for(int j=0;j<m;j++){
+//                System.out.print(map[i][j]+" ");
+//            }
+//            System.out.println();
+//        }
+//        for(int i=0;i<sumList.size();i++){
+//            System.out.println(i+"번째 섬의 좌표");
+//            for(int[] point:sumList.get(i)){
+//                System.out.println("{"+point[0]+","+point[1]+"}");
+//            }
+//            System.out.println("_______________________");
+//        }
+//    }
+//    static void bfs(int i,int j){
+//        //큐 만들기
+//        Queue<int[]> queue = new LinkedList<>();
+//        //방문처리
+//        s_point_list = new ArrayList<>();
+//        queue.offer(new int[]{i,j});
+//        visited[i][j] = true;
+//        map[i][j] = snum;
+//        //큐 비지 않을 동안
+//        while(!queue.isEmpty()){
+//            int[] now = queue.poll();
+//            int x = now[0];
+//            int y = now[1];
+//            for(int a=0;a<4;a++){
+//                int next_x = x+dx[a];
+//                int next_y = y+dy[a];
+//                if(next_x>=0&&next_x<n&&next_y>=0&&next_y<m
+//                &&!visited[next_x][next_y]&&map[next_x][next_y]!=0){
+//                    visited[next_x][next_y]=true;
+//                    s_point_list.add(new int[]{next_x,next_y});
+//                    queue.offer(new int[]{next_x,next_y});
+//                    map[next_x][next_y] = snum;
+//                }
+//            }
+//        }
+//            //큐에서 꺼내기
+//            //큐에 연결된 것들 꺼내서 범위 안벗어나고, 땅(1)이고, 방문 안했으면
+//                //방문처리, 좌표 리스트에 넣기, 큐에 넣기, 땅 숫자 변경
+//
+//    }
+//}
