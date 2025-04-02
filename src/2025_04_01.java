@@ -271,6 +271,8 @@
 //    static int[] dy = {1,-1,0,0};
 //    static int n;
 //    static int m;
+//    static PriorityQueue<Edge> edgeList;
+//    static int[] parent;
 //    public static void main(String[] args)throws IOException{
 //        //좌표 받기
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -289,7 +291,7 @@
 //        visited = new boolean[n][m];
 //        sumList = new ArrayList<>();
 //        for(int i=0;i<n;i++){
-//            for(int j=0;j<n;j++){
+//            for(int j=0;j<m;j++){
 //                if(map[i][j]==1 && !visited[i][j]){
 //                    bfs(i,j);
 //                    sumList.add(s_point_list);
@@ -297,19 +299,79 @@
 //                }
 //            }
 //        }
-//        for(int i=0;i<n;i++){
-//            for(int j=0;j<m;j++){
-//                System.out.print(map[i][j]+" ");
-//            }
-//            System.out.println();
-//        }
+////        for(int i=0;i<n;i++){
+////            for(int j=0;j<m;j++){
+////                System.out.print(map[i][j]+" ");
+////            }
+////            System.out.println();
+////        }
+////        for(int i=0;i<sumList.size();i++){
+////            System.out.println(i+"번째 섬의 좌표");
+////            for(int[] point:sumList.get(i)){
+////                System.out.println("{"+point[0]+","+point[1]+"}");
+////            }
+////            System.out.println("_______________________");
+////        }
+//
+//        //for 각 섬들 i
+//            //각 좌표들 에서 4개의 방향으로 뻗어나가서 a
+//            //만약 가다가 0이 아닌 것 or 범위 벗어나면 종료 l
+//            //도착한곳이 다른 섬이고 l이 2 이상이면 엣지로 저장
+//            //
+//        edgeList = new PriorityQueue<>();
 //        for(int i=0;i<sumList.size();i++){
-//            System.out.println(i+"번째 섬의 좌표");
-//            for(int[] point:sumList.get(i)){
-//                System.out.println("{"+point[0]+","+point[1]+"}");
+//            for(int[] j:sumList.get(i)){
+//                int x = j[0];
+//                int y = j[1];
+//                int nowSnum = map[x][y];
+//                for(int a=0;a<4;a++){
+//                    int addX = dx[a];
+//                    int addY = dy[a];
+//                    int l = 0;
+//                    while(x+addX>=0&&x+addX<n&&y+addY>=0&&y+addY<m){
+//                        if(map[x+addX][y+addY]==nowSnum)
+//                            break;
+//                        else if(map[x+addX][y+addY]!=0){
+//                            if(l>=2)
+//                                edgeList.add(new Edge(nowSnum,map[x+addX][y+addY],l));
+//                            break;
+//                        }
+//                        else
+//                            l++;
+//                        if(addX>0)
+//                            addX++;
+//                        else if(addX<0)
+//                            addX--;
+//                        else if(addY>0)
+//                            addY++;
+//                        else if(addY<0)
+//                            addY--;
+//                    }
+//                }
 //            }
-//            System.out.println("_______________________");
 //        }
+//
+//        //크루스칼
+//        parent = new int[sumList.size()+1];
+//        for(int i=1;i<parent.length;i++)
+//            parent[i] = i;
+//        int selectedEdges = 0;
+//        int ans = 0;
+//        while(!edgeList.isEmpty()){
+//            Edge now = edgeList.poll();
+//            if(find(now.orig)!=find(now.dest)){
+//                union(now.orig,now.dest);
+//                selectedEdges++;
+//                ans+=now.val;
+//            }
+//        }
+//
+//        if(selectedEdges == sumList.size()-1)
+//            System.out.println(ans);
+//        else
+//            System.out.println(-1);
+//
+//
 //    }
 //    static void bfs(int i,int j){
 //        //큐 만들기
@@ -317,6 +379,7 @@
 //        //방문처리
 //        s_point_list = new ArrayList<>();
 //        queue.offer(new int[]{i,j});
+//        s_point_list.add(new int[]{i,j});
 //        visited[i][j] = true;
 //        map[i][j] = snum;
 //        //큐 비지 않을 동안
@@ -339,6 +402,37 @@
 //            //큐에서 꺼내기
 //            //큐에 연결된 것들 꺼내서 범위 안벗어나고, 땅(1)이고, 방문 안했으면
 //                //방문처리, 좌표 리스트에 넣기, 큐에 넣기, 땅 숫자 변경
-//
 //    }
+//
+//    static int find(int n){
+//        if(parent[n]==n)
+//            return n;
+//        return parent[n] = find(parent[n]);
+//    }
+//
+//    static void union(int a, int b){
+//        a = find(a);
+//        b = find(b);
+//        if(a!=b)
+//            parent[b] = a;
+//    }
+//}
+//
+//class Edge implements Comparable<Edge>{
+//
+//    int orig;
+//    int dest;
+//    int val;
+//
+//    Edge(int orig, int dest, int val){
+//        this.orig = orig;
+//        this.dest = dest;
+//        this.val = val;
+//    }
+//
+//    public int compareTo(Edge o){
+//        return this.val-o.val;
+//    }
+//
+//
 //}
