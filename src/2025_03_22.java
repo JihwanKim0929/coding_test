@@ -38,7 +38,7 @@
 
 //import java.io.*;
 //import java.util.*;
-//class p41{
+//class p41{    //배열을 통한 소수 판별이 없음 -> 소인수들 다 지워서(n%p==0->n/=p) 중복 제거 막음
 //    public static void main(String[] args)throws IOException{
 //        Scanner sc = new Scanner(System.in);
 //        long n = sc.nextLong();
