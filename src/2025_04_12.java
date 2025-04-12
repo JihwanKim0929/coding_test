@@ -66,3 +66,45 @@
 //        }
 //    }
 //}
+
+//import java.util.*;
+//import java.io.*;
+//
+//class p82{
+//    public static void main(String[] args)throws IOException{
+//        int[][] D = new int[201][201];
+//        for(int i=0;i<=200;i++){
+//            D[i][0] = 1;
+//            D[i][i] = 1;
+//            D[i][1] = i;
+//        }
+//        for(int i=3;i<=200;i++){
+//            for(int j=2;j<i;j++){
+//                D[i][j] = D[i-1][j-1]+D[i-1][j];
+//                if(D[i][j]>1000000000)
+//                    D[i][j]=1000000001;
+//            }
+//        }
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st = new StringTokenizer(br.readLine());
+//        int n = Integer.parseInt(st.nextToken());   //a개수
+//        int m = Integer.parseInt(st.nextToken());   //z개수
+//        int k = Integer.parseInt(st.nextToken());
+//
+//        if(D[n+m][m]<k){
+//            System.out.println(-1);
+//        }else {
+//            int l = n + m;
+//
+//            for (int i = 0; i < l; i++) {
+//                if (k <= D[l - i - 1][m]) {
+//                    System.out.print("a");
+//                } else {
+//                    System.out.print("z");
+//                    k -= D[l - i - 1][m];
+//                    m--;
+//                }
+//            }
+//        }
+//    }
+//}
