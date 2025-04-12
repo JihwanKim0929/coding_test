@@ -26,3 +26,34 @@
 //
 //    }
 //}
+
+//import java.util.*;
+//import java.io.*;
+//class p80{
+//    public static void main(String[] args)throws IOException{
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st;
+//        int c = Integer.parseInt(br.readLine());
+//        int[] colors = new int[c];
+//        int allStones = 0;
+//        st = new StringTokenizer(br.readLine());
+//        for(int i=0;i<c;i++) {
+//            colors[i] = Integer.parseInt(st.nextToken());
+//            allStones += colors[i];
+//        }
+//        int k = Integer.parseInt(br.readLine());
+//
+//        double ans = 0;
+//        for(int i=0;i<colors.length;i++){
+//            if(colors[i]>=k) {
+//                double tmp = 1;
+//                for (int j = 0; j < k; j++) {
+//                    tmp *= (double) (colors[i] - j) / (allStones - j);
+//                }
+//                ans += tmp;
+//            }
+//        }
+//        System.out.println(ans);
+//    }
+//}
+
