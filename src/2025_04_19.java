@@ -6,7 +6,7 @@
 //        Scanner sc = new Scanner(System.in);
 //        int n = sc.nextInt();
 //        long mod = 1000000000;
-//        long[] D = new long[n+1];
+//        long[] D = new long[1000001];
 //        D[1] = 0;
 //        D[2] = 1;
 //        for(int i=3;i<=n;i++){
