@@ -71,3 +71,64 @@
 //        return d[c][v];
 //    }
 //}
+
+import java.util.*;
+import java.io.*;
+class p96{
+    static int n;
+    static int[] A;
+    static int[] D;
+    static int[] B;
+    static int max; //B배열 마지막 인덱스
+    public static void main(String[] args)throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        A = new int[n+1];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for(int i=1;i<=n;i++)
+            A[i] = Integer.parseInt(st.nextToken());
+
+        D = new int[n+1]; //각 원소의 LIS 길이
+
+        B = new int[n+1]; //각 LIS 길이에 해당하는 A[i]의 원소들중 제일 큰 인덱스 값
+        
+        D[1] = 1;
+        B[1] = A[1];
+        max = 1;
+        for(int i=2;i<=n;i++){
+            if(A[i]>B[max]){
+                D[i] = ++max;
+                B[max] = A[i];
+            }else{
+                int mid;
+                int l = 1;
+                int r = max;
+                while(l<r){
+                    mid = (l+r)/2;
+                    if(A[i]>B[mid])
+                        l = mid+1;
+                    else
+                        r = mid;
+                }   //l이 B 중에서 A[i]보다 크거나 같은 최초의 인덱스번호
+                B[l] = A[i];
+                D[i] = l;
+            }
+        }
+        System.out.println(max);
+
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=n;i>=1;i--){
+            if(D[i]==max) {
+                ans.add(A[i]);
+                max--;
+            }
+            if(max==0)
+                break;
+        }
+
+        for(int i=ans.size()-1;i>=0;i--){
+            System.out.print(ans.get(i)+" ");
+        }
+
+    }
+}
